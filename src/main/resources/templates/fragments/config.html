@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  <head th:fragment="config">
+	  	<title>thymeleaf layout</title>
+	  	
+	  	<!-- 공통적으로 사용되는 css -->
+	  	<link rel="stylesheet" th:href="@{/css/style.css}">
+	  	
+	  	<!-- 페이지별로 별도로 사용할 css -->
+	  	<th:block layout:fragment="css"></th:block>
+	  	
+	  	<!-- 공통적으로 사용되는 js -->
+	  	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+	  	
+	  	<!-- 페이지별로 별도로 사용할 script -->
+	  	<th:block layout:fragment="script"></th:block>
+	  </head>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout}">
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<!--<th:block layout:fragment="css">
+			<link rel="stylesheet" th:href="@{/css/test.css}">
+		</th:block>
+		<th:block layout:fragment="script">
+			<script>
+				$(function() {
+					alert("hello spring boot");
+				});
+			</script>
+		</th:block>-->
+	</head>
+	<body>
+		<header></header>
+		<div layout:fragment="content" style="text-align: center;">
+			<h1>게시판 홈 화면입니다.</h1>
+			<p>회원가입, 로그인, 그리고 간단한 게시판 기능을</p>
+			<p>구현하도록 하겠습니다.</p>
+		</div>
+		<footer></footer>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout}">
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<!--<th:block layout:fragment="css">
+			<link rel="stylesheet" th:href="@{/css/test.css}">
+		</th:block>
+		<th:block layout:fragment="script">
+			<script>
+				$(function() {
+					alert("hello spring boot");
+				});
+			</script>
+		</th:block>-->
+	</head>
+	<body>
+		<header></header>
+		<div layout:fragment="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+			<h3>새 글 등록</h3>
+			<form action="/board/insertBoard" method="post" enctype="multipart/form-data">
+				<table border="1" style="border-collapse: collapse">
+					<tr>
+						<td style="background: orange; width: 70px;">
+							제목
+						</td>
+						<td style="text-align: left;">
+							<input type="text" name="boardTitle" required>
+						</td>
+					</tr>
+					<tr>
+						<td style="background: orange;">
+							작성자
+						</td>
+						<td style="text-align: left;">
+							<input type="text" name="boardWriter" th:value="${#authentication.principal.username}" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td style="background: orange; width: 70px;">
+							내용
+						</td>
+						<td style="text-align: left;">
+							<textarea name="boardContent" cols="40" rows="10" required></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="background: orange; width: 70px;">
+							업로드
+						</td>
+						<td align="left">
+							<input type="file" name="uploadFiles" multiple="multiple">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<button type="submit">새 글 등록</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<hr/>
+			<a href="/board/getBoardList">글 목록</a>
+		</div>
+		<footer></footer>
+	</body>
+</html>

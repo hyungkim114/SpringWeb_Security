@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout}">
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<th:block layout:fragment="script">
+			<script>
+				//로그인 시 아이디나 비밀번호가 틀렸을 경우를
+				//대비하여 폼을 서브밋 하지 않고
+				//후 처리를 위해 ajax로 처리
+				$(function() {
+					/*$("#btnLogin").on("click", function() {
+						$.ajax({
+							url: '/user/login',
+							type: 'post',
+							data: $("#loginForm").serialize(),
+							success: function(obj) {
+								//1. 아이디 체크
+								if(obj === 'idFail') {
+									alert("존재하지 않는 아이디입니다.");
+									return;
+								} else if(obj === 'pwFail') {
+									//2. 비밀번호 체크
+									alert("비밀번호가 틀렸습니다.");
+									return;
+								}
+
+								//3. 로그인 처리
+								location.href = "/";
+							},
+							error: function(e) {
+								console.log(e);
+							}
+						});
+					});*/
+				});
+			</script>
+		</th:block>
+	</head>
+	<body>
+		<header></header>
+		<div layout:fragment="content" class="form-wrapper">
+			<form id="loginForm" action="/user/loginProc" method="post">
+				<h3>로그인</h3>
+				<div class="label-wrapper">
+					<label for="userId">아이디</label>
+				</div>
+				<input type="text" id="userId" name="userId" required>
+				<div class="label-wrapper">
+					<label for="userPw">비밀번호</label>
+				</div>
+				<input type="password" id="userPw" name="userPw" required>
+				<div style="display: block; margin: 20px auto;">
+					<button type="submit" id="btnLogin">로그인</button>
+				</div>
+				<div style="display: block; margin: 20px auto;">
+					<!--자원서버로 요청을 보냄-->
+					<a href="/oauth2/authorization/kakao">
+						<img th:src="@{/images/kakao_login.png}" style="width: 150px;">
+					</a>
+				</div>
+			</form>
+		</div>
+		<footer></footer>
+	</body>
+</html>

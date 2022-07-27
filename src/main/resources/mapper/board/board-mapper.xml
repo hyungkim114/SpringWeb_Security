@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/dtd/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.boardweb.mapper.BoardMapper">
+	<select id="getNextBoardSeq" resultType="int">
+	<![CDATA[
+		SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1
+			FROM T_BOARD
+	]]>
+	</select>
+	
+	<update id="updateBoardSeq" parameterType="int">
+	<![CDATA[
+		UPDATE T_BOARD
+			SET BOARD_SEQ = BOARD_SEQ - 1
+			WHERE BOARD_SEQ > #{boardSeq}
+	]]>
+	</update>
+</mapper>
